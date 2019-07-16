@@ -1,11 +1,11 @@
-const path  = requre('path');
+const path  = require('path');
 const express = require('express');
 
 const app = express();
-const publicPath = path.resolve(__dirname, '../dist');
+app.use(express.static(path.resolve(__dirname, 'views')));
 
-app.set('views', publicPath);
-app.get('./', (req, res) => {
-  res.render('index');
+app.get('/', (req, res) => {
+  res.sendFile('index.html');
 });
-app.listen(config.port, () => console.log('ready'));
+
+app.listen(8080, () => console.log('ready'));
