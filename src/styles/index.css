@@ -22,7 +22,11 @@ nav {
 
 header, footer {
   width: 100%;
-  background: grey;
+  background-color: #ff8300;
   display: flex;
   flex-basis: 40px;
+}
+
+header h1 {
+  color: #fff;
 }

@@ -9,15 +9,18 @@
     "prebuild": "npm run clean && cp -r ./src/* ./dist",
     "build": "workbox generateSW",
     "prestart": "npm run build",
-    "start": "npm run build && node ./server/index.js"
+    "start": "node ./server/index.js"
   },
   "author": "christopher mca",
   "license": "MIT",
   "devDependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {
     "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "webpack": "^4.36.1",
     "workbox-cli": "^4.3.1"
   }
 }
