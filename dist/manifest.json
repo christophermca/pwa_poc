@@ -1,0 +1,8 @@
+{
+  "short_name": "Proteus",
+  "name": "Proteus app",
+  "start_url": "./index.html",
+  "display": "minimal-ui",
+  "background-color": "#FFFFFF"
+
+}

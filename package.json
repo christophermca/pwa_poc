@@ -5,15 +5,18 @@
   "main": "server/index.js",
   "private": true,
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rm -rf ./dist && mkdir ./dist",
+    "prebuild": "npm run clean && cp -r ./src/* ./dist",
+    "build": "workbox generateSW",
+    "prestart": "npm run build",
+    "start": "npm run build && node ./server/index.js"
   },
   "author": "christopher mca",
   "license": "MIT",
   "devDependencies": {
     "express": "^4.17.1"
   },
-  "scripts": {
-    "start": "node ./server/index.js"
+  "dependencies": {
+    "workbox-cli": "^4.3.1"
   }
-
 }
