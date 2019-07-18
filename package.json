@@ -6,29 +6,27 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf ./dist && mkdir ./dist",
-    "build": "npm run clean && webpack --config ./webpack.config.js",
+    "copy": "cp -r ./src/app ./dist/app & cp ./manifest.json ./dist",
+    "prebuild": "npm run clean && npm run copy",
+    "build": "webpack --config ./webpack.config.js",
     "prestart": "npm run build",
-    "start": "node ./node_modules/.bin/webpack-dev-server --progress"
+    "start": "node ./server/index.js"
   },
   "author": "christopher mca",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
-    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
     "express": "^4.17.1",
     "file-loader": "^4.0.0",
-    "sass-loader": "^7.1.0",
-    "style-loader": "^0.23.1",
+    "node-fetch": "^2.6.0",
     "webpack": "^4.36.1",
-    "webpack-cli": "^3.3.6",
-    "webpack-dev-server": "^3.7.2",
-    "workbox-webpack-plugin": "^4.3.1"
+    "webpack-cli": "^3.3.6"
   },
   "dependencies": {
-    "html-webpack-plugin": "^3.2.0",
+    "express-async-await": "^1.1.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "workbox-cli": "^4.3.1"
