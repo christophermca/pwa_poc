@@ -1,7 +1,7 @@
 const path  = require('path');
 const express = require('express');
 const publicPath = path.resolve(__dirname, '../dist/');
-const manifest = push.resolve(__dirname, 'src/manifest.json');
+const manifest = path.resolve(__dirname, '../src/manifest.json');
 
 
 const app = express();
@@ -12,7 +12,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/manifest.json', (req, res) => {
-  res.type('json').send(manifest);
+  res.status(200).sendFile(manifest);
 });
 
 

@@ -3,8 +3,8 @@ const htmlPlugin = require("html-webpack-plugin");
 const workboxPlugin = require('workbox-webpack-plugin');
 
 module.exports = {
-  mode: 'development',
-  entry: './src/scripts/',
+  mode: 'production',
+  entry: path.resolve(__dirname, './src/scripts/index.js'),
   output: {
     path: path.resolve(__dirname, 'dist'),
     filename: 'bundle.js'
@@ -16,7 +16,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            presets: ['@babel/preset-env']
+            presets: ['@babel/preset-env', '@babel/preset-react']
           }
         }
       },
@@ -26,14 +26,18 @@ module.exports = {
       },
     ],
   },
+  resolve: {
+    modules: [
+      path.resolve("./src")
+    ],
+    extensions: [".js", ".jsx"]
+  },
   plugins: [
     new workboxPlugin.GenerateSW({
-      globDirectory: './dist',
-      globPatterns: ['\*\*/\*.{html,js,css}'],
       swDest: './dist/sw.js',
       runtimeCaching: [{
         urlPattern: /.*/,
-        handler: 'NetworkFirst',
+        handler: 'cacheFirst',
         options: {
           networkTimeoutSeconds: 10
         }
@@ -43,11 +47,12 @@ module.exports = {
       template: './src/index.html'
     })
   ],
-  resolve: {
-    modules: [
-      path.resolve("./src")
-    ],
-    extensions: [".js", ".jsx"]
-  }
+  devServer: {
+    contentBase: './',
+    host: '0.0.0.0',
+    port: 8080,
+    inline: true
+  },
+  devtool: "source-map"
 };
 

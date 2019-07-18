@@ -6,16 +6,16 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf ./dist && mkdir ./dist",
-    "prebuild": "npm run clean && webpack --config ./webpack.config.js",
-    "build": "workbox generateSW",
+    "build": "npm run clean && webpack --config ./webpack.config.js",
     "prestart": "npm run build",
-    "start": "node ./server/index.js"
+    "start": "node ./node_modules/.bin/webpack-dev-server --progress"
   },
   "author": "christopher mca",
   "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
+    "@babel/preset-react": "^7.0.0",
     "babel-loader": "^8.0.6",
     "css-loader": "^3.0.0",
     "express": "^4.17.1",
@@ -24,6 +24,7 @@
     "style-loader": "^0.23.1",
     "webpack": "^4.36.1",
     "webpack-cli": "^3.3.6",
+    "webpack-dev-server": "^3.7.2",
     "workbox-webpack-plugin": "^4.3.1"
   },
   "dependencies": {
