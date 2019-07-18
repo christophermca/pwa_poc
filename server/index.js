@@ -21,7 +21,16 @@ app.get('/', (req, res) => {
 });
 
 app.get('/connect', (req, res) => {
-  res.status(200).send({"context": "patchConnect"});
+  const {type} = req.query;
+  const acceptedTypes = ['patch'];
+  if (acceptedTypes.includes(type)) {
+    return res.json({"context": "patch"});
+  } else {
+    console.log(`"${type}" is an invalid type`);
+    return res.status(400).json({"context": "complete"});
+  }
+
+
 });
 
 app.get('/manifest.json', (req, res) => {

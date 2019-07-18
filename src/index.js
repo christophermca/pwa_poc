@@ -1,7 +1,12 @@
 import app from './app/index.js';
 
-app.render();
+window.fetch('/connect?type=patch')
+  .then((res) => res.json())
+  .then(({context = 'complete'} = json) => {
+    app.render(context);
+  });
 
-fetch('/connect', (req, res) => {
-  return res.status(200)
-}).then(() => app.render('patchConnect'));
+window.addEventListener('load', () => {
+  navigator.serviceWorker.register('./sw.js');
+});
+

@@ -7,16 +7,21 @@ import patchConnect from '../patchConnect/index.js';
 
 export default {
   render(context) {
+    let htmlMessage = '';
     switch(context) {
-      case 'patchConnect':
-        document.getElementById('root').innerHTML = patchConnect.render();
+      case 'patch':
+        htmlMessage = patchConnect.render();
         console.log('rendering');
         break;
-
+      case 'complete':
+        htmlMessage = 'Complete!';
+        break;
       default:
         console.log('Loading App Shell');
-        document.getElementById('root').innerHTML = 'loading...';
+        htmlMessage = 'loading...';
     }
+
+    document.getElementById('root').innerHTML = htmlMessage;
   }
 };
 
