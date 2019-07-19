@@ -1,12 +1,19 @@
-const template = `<form>
-    <input placeholder="username" />
-    <input placeholder="password" />
-    <button type="submit"/>
-  </form>`;
+import Bluetooth from '../Bluetooth';
+const template = (message = "NOT Connected?") => {
+
+return `
+<div id="connect">${message}</div>
+`
+}
 
 const patchConnect = {
+  connect() {
+    Bluetooth.add()
+  }
+
   render() {
-    return template;
+    this.connect();
+    return template();
   }
 };
 

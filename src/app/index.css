@@ -30,3 +30,13 @@ header, footer {
 header h1 {
   color: #fff;
 }
+
+#connect {
+  height: 200px;
+  width: 80%;
+  border: 5px solid #ddd;
+  text-align: center;
+  background: red;
+  color:white;
+  border-radius: 15px;
+}

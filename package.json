@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "clean": "rm -rf ./dist && mkdir ./dist",
-    "copy": "cp -r ./src/app ./dist/app & cp ./manifest.json ./dist",
+    "copy": "cp -r ./src/app/ ./dist/app/ && cp -r ./server/services/* ./dist/",
     "prebuild": "npm run clean && npm run copy",
     "build": "webpack --config ./webpack.config.js",
     "prestart": "npm run build",
