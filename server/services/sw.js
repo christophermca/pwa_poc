@@ -1,5 +1,5 @@
 const staticCacheName = 'cache-data-v1';
-const filesToCache = ['/manifest.json', '/app/script.js','/app/index.css'];
+const filesToCache = ['/manifest.json', '/app/script.js','/app/index.css', '/app/index.html'];
 
 self.addEventListener('fetch', (event) => {
   event.respondWith(

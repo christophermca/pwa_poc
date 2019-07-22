@@ -11,7 +11,7 @@ app.use(express.static(publicPath));
 /*use routes to control app state */
 
 // fetch appshell
-app.use('/*', (req, res, next) => {
+app.use('/', (req, res, next) => {
   res.sendFile(`${appShell}/index.html`);
   return next();
 });
@@ -24,7 +24,7 @@ app.get('/connect', (req, res) => {
   const {type} = req.query;
   const acceptedTypes = ['patch'];
   if (acceptedTypes.includes(type)) {
-    return res.json({"context": "patch"});
+    return res.json({"context": "patchConnect"});
   } else {
     console.log(`"${type}" is an invalid type`);
     return res.status(400).json({"context": "complete"});

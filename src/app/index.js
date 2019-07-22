@@ -3,14 +3,36 @@
  * include all required apps
  * */
 
-import patchConnect from '../patchConnect/index.js';
+import PatchConnect from '../patchConnect/';
 
-export default {
-  render(context) {
-    let htmlMessage = '';
-    switch(context) {
+class App {
+  static connectDevice(device) {
+    switch(device) {
       case 'patch':
-        htmlMessage = patchConnect.render();
+        PatchConnect.connect();
+        break;
+      default:
+        console.log('device not supported');
+    }
+  };
+
+  static renderShell() {
+    return new Promise(resolve => {
+    console.log('Loading App Shell');
+    const htmlMessage = 'loading...';
+
+    // could instantiate a client side app eg 'React app'
+    document.getElementById('root').innerHTML = htmlMessage;
+    return resolve('htmlMessage');
+    });
+  };
+
+  // renderState
+  static render(state) {
+    let htmlMessage = '';
+    switch(state) {
+      case 'patchConnect':
+        htmlMessage = PatchConnect.render();
         console.log('rendering');
         break;
       case 'complete':
@@ -20,8 +42,10 @@ export default {
         console.log('Loading App Shell');
         htmlMessage = 'loading...';
     }
-
-    document.getElementById('root').innerHTML = htmlMessage;
+    // could instantiate a client side app at this point
+    Promise.resolve(document.getElementById('root').innerHTML = htmlMessage);
   }
 };
+
+export default App;
 
